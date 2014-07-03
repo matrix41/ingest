@@ -30,18 +30,26 @@ my @splitarray = split(/,/, $array[36]);
 tie my %butler_hash, "Tie::IxHash" or die "could not tie %hash";
 
 
+my $temp;
 for ( my $i = 0; $i <= $#splitarray; $i++ ) 
 {
-  print "Index $i ==> $splitarray[$i]\n";
-  $butler_hash{"$splitarray[$i]"} = undef;
+  print "Index $i ==> $splitarray[$i]||||||\n";
+# NOTE-TO-SELF: I wrote this IF block because the last key value -- RV -- has 
+# this weird return character in it that fucks up my hash keys and produces 
+# unexpected results.  This kluge addresses the problem.  (7/3/2014)
+  if ( $splitarray[$i] =~ /RV/ ) {
+    $butler_hash{RV} = undef;
+  } else {
+    $butler_hash{"$splitarray[$i]"} = undef;
+  }
 }
 
 
 while ( my ($key, $value) = each(%butler_hash) ) {
-    if ( $value == undef) {
+    if ( ! defined $butler_hash{$key} ) {
         print "$key ==> undef\n";
     } else {
-        print "$key\n";
+        print "$key ==> $value\n";
     }
 }
 
