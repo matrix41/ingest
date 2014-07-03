@@ -3,6 +3,7 @@
 use strict;
 use warnings;
 use feature qw(switch say); # need this for GIVEN-WHEN block
+use Tie::IxHash;
 
 #Define: 
 my $inputfile = 'J_ApJ_646_505_table3-140624.csv';
@@ -23,12 +24,26 @@ print $array[36];
 print "\n";
 my @splitarray = split(/,/, $array[36]);
 
+# OLD
+# my %butler_hash = ();
+# NEW
+tie my %butler_hash, "Tie::IxHash" or die "could not tie %hash";
+
+
 for ( my $i = 0; $i <= $#splitarray; $i++ ) 
 {
   print "Index $i ==> $splitarray[$i]\n";
-
+  $butler_hash{"$splitarray[$i]"} = undef;
 }
 
+
+while ( my ($key, $value) = each(%butler_hash) ) {
+    if ( $value == undef) {
+        print "$key ==> undef\n";
+    } else {
+        print "$key\n";
+    }
+}
 
 # print "$splitarray[1]\n";
 # print "$splitarray[2]\n";
