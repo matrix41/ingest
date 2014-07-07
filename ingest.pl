@@ -19,9 +19,13 @@ close ($fh);
 
 # print @array;
 # print $array[122]; # this will print Sequence #84
-# print $array[36]; # this will print all the headers
-print $array[36];
-print "\n";
+
+
+# print "$array[36]\n"; # this will print all the headers
+# print "$array[37]\n"; # this will print all the metric units (m/s, deg, AU, ....)
+
+
+# Create hash keys from the column headers 
 my @splitarray = split(/,/, $array[36]);
 
 # OLD
@@ -33,10 +37,13 @@ tie my %butler_hash, "Tie::IxHash" or die "could not tie %hash";
 my $temp;
 for ( my $i = 0; $i <= $#splitarray; $i++ ) 
 {
-  print "Index $i ==> $splitarray[$i]||||||\n";
-# NOTE-TO-SELF: I wrote this IF block because the last key value -- RV -- has 
-# this weird return character in it that fucks up my hash keys and produces 
-# unexpected results.  This kluge addresses the problem.  (7/3/2014)
+
+#  print "Index $i ==> $splitarray[$i]||||||\n"; # output splitarray contents
+
+# NOTE-TO-SELF: I wrote the following IF block below because the 
+# last key value -- RV -- has this weird return character in it 
+# that fucks up my hash keys and produces unexpected results.  
+# This kluge addresses the problem.  (7/3/2014)
   if ( $splitarray[$i] =~ /RV/ ) {
     $butler_hash{RV} = undef;
   } else {
@@ -44,7 +51,7 @@ for ( my $i = 0; $i <= $#splitarray; $i++ )
   }
 }
 
-
+# this WHILE-loop prints the contents of the hash header 
 while ( my ($key, $value) = each(%butler_hash) ) {
     if ( ! defined $butler_hash{$key} ) {
         print "$key ==> undef\n";
