@@ -56,7 +56,10 @@ for ( my $j = 38; $j <= $#array; $j++ )
 # $split_entry[25] : plnmsinijerr1 / plnmsinijerr2 
 # $split_entry[27] : plnorbsmax 
 # $split_entry[28] : plnorbsmaxerr1 / plnorbsmaxerr2 
-  print $fh2 "$split_entry[1] $split_entry[2] $split_entry[4] $split_entry[5] $split_entry[7] $split_entry[8] $split_entry[10] $split_entry[11] $split_entry[13] $split_entry[14] $split_entry[16] $split_entry[18] $split_entry[24]$split_entry[25] $split_entry[27] $split_entry[28]\n"; 
+  if ( $split_entry[34] =~ /^Bu6$/ ) # get only those sources that are original work by Butler 
+  {
+    print $fh2 "$split_entry[1] $split_entry[2] $split_entry[4] $split_entry[5] $split_entry[7] $split_entry[8] $split_entry[10] $split_entry[11] $split_entry[13] $split_entry[14] $split_entry[16] $split_entry[18] $split_entry[24]$split_entry[25] $split_entry[27] $split_entry[28] $split_entry[34]\n"; 
+  }
 }
 
 close ($fh2);
