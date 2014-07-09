@@ -11,7 +11,7 @@ my $outputfile = 'butler_table3a.txt';
 my @kill_list = ("HD 142 b", "HD 1237 b", "HD 10647 b", "HD 13445 b", "79 Cet b", "HD 83443 b", 
                  "HD 102117 b", "HD 107148 b", "HD 108147 b", "HD 111232 b", "HD 114762 b", 
                  "HD 114729 b", "70 Vir b", "HD 117207 b", "HD 117618 b", "HD 164922 b", 
-                 "16 Cyg B b", "51 Peg b");
+                 "16 Cyg B b", "51 Peg b", "HD 136118 b");
 
 #Declare new filehandle and associated it with filename
 open (my $fh, '<', $inputfile) or die "\nCould not open file '$inputfile' $!\n";
@@ -101,20 +101,27 @@ for ( my $i = 0; $i <= $#splitarray; $i++ )
 # last key value -- RV -- has this weird return character in it 
 # that fucks up my hash keys and produces unexpected results.  
 # This kluge addresses the problem.  (7/3/2014)
-  if ( $splitarray[$i] =~ /RV/ ) {
+  if ( $splitarray[$i] =~ /RV/ )
+  {
     $butler_hash{RV} = undef;
-  } else {
+  }
+  else
+  {
     $butler_hash{"$splitarray[$i]"} = undef;
   }
 }
 
 # this WHILE-loop prints the contents of the hash header 
-while ( my ($key, $value) = each(%butler_hash) ) {
-    if ( ! defined $butler_hash{$key} ) {
-        print "$key ==> undef\n";
-    } else {
-        print "$key ==> $value\n";
-    }
+while ( my ($key, $value) = each(%butler_hash) )
+{
+  if ( ! defined $butler_hash{$key} )
+  {
+    print "$key ==> undef\n";
+  }
+  else
+  {
+    print "$key ==> $value\n";
+  }
 }
 
 # print "$splitarray[1]\n";
