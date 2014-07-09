@@ -8,7 +8,10 @@ use Tie::IxHash;
 #Define: 
 my $inputfile = 'J_ApJ_646_505_table3-140624.csv';
 my $outputfile = 'butler_table3a.txt';
-
+my @kill_list = ("HD 142 b", "HD 1237 b", "HD 10647 b", "HD 13445 b", "79 Cet b", "HD 83443 b", 
+                 "HD 102117 b", "HD 107148 b", "HD 108147 b", "HD 111232 b", "HD 114762 b", 
+                 "HD 114729 b", "70 Vir b", "HD 117207 b", "HD 117618 b", "HD 164922 b", 
+                 "16 Cyg B b", "51 Peg b");
 
 #Declare new filehandle and associated it with filename
 open (my $fh, '<', $inputfile) or die "\nCould not open file '$inputfile' $!\n";
@@ -56,11 +59,26 @@ for ( my $j = 38; $j <= $#array; $j++ )
 # $split_entry[25] : plnmsinijerr1 / plnmsinijerr2 
 # $split_entry[27] : plnorbsmax 
 # $split_entry[28] : plnorbsmaxerr1 / plnorbsmaxerr2 
+  my $reject = 0; #initialize reject variable: "0" = keep | "1" = reject 
+  my $planet_name = "$split_entry[1]"." "."$split_entry[2]";
+#  print "My planet name is $planet_name\n";
+
+
+# Step 1 of 3: this IF block only considers original research done by Butler 2006 
+# Step 2 of 3: this FOR loops checks whether the planet is in the kill list 
   if ( $split_entry[34] =~ /^Bu6$/ ) # get only those sources that are original work by Butler 
   {
-    print $fh2 "$split_entry[1] $split_entry[2] $split_entry[4] $split_entry[5] $split_entry[7] $split_entry[8] $split_entry[10] $split_entry[11] $split_entry[13] $split_entry[14] $split_entry[16] $split_entry[18] $split_entry[24]$split_entry[25] $split_entry[27] $split_entry[28] $split_entry[34]\n"; 
-  }
-}
+    for ( my $k = 0 ; $k <= $#kill_list ; $k++ )
+    {
+ #     print "kill_list: $kill_list[$k]\n";
+      $reject = 1 if ( $planet_name =~ /$kill_list[$k]/ )
+    }
+    if ( $reject == 0 ) # if $planet_name is not in the kill list, then print this planet 
+    {
+      print $fh2 "$split_entry[1] $split_entry[2] $split_entry[4] $split_entry[5] $split_entry[7] $split_entry[8] $split_entry[10] $split_entry[11] $split_entry[13] $split_entry[14] $split_entry[16] $split_entry[18] $split_entry[24]$split_entry[25] $split_entry[27] $split_entry[28] $split_entry[34]\n";
+    }
+  } # end IF block Bu6
+} # end FOR loop array
 
 close ($fh2);
 
