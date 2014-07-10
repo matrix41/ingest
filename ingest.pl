@@ -38,6 +38,25 @@ for ( my $j = 38; $j <= $#array; $j++ )
 {
 #  print $array[$j];
   @split_entry = split( /,/, $array[$j] );
+
+
+# THIS CHUNK OF COMMENTED CODE WAS USED TO DIAGNOSE PROBLEM 
+# WHERE THE FIELD WAS DEFINED BUT HAD ZERO LENGTH  
+# # this FOR-loop will check for undef fields
+# # this FOR-loop will check for blank spaces in each field 
+#   for ( my $n = 0 ; $n <= $#split_entry ; $n++ )
+#   {
+# #    if ( !defined $split_entry[$n] )
+# #    if ( $split_entry[$n] =~ /^\s+$/ )
+#     if ( $n == 14 )
+#     {
+# #      print "$n is undef\n";
+#       print "Index 14 = ||$split_entry[$n]||\n";
+#       print "Index 14 length is ", length($split_entry[$n]), "\n";
+#     }
+#   }
+
+
 #  print "$split_entry[0]  $split_entry[1]  $split_entry[2]  $split_entry[3]\n";
   # print "\nset heading off\n";
   # print "select OBJECTID, ALIASDIS\n";
@@ -66,9 +85,9 @@ for ( my $j = 38; $j <= $#array; $j++ )
 
 
 # Step 1 of 3: this IF block only considers original research done by Butler 2006 
-# Step 2 of 3: this FOR loops checks whether the planet is in the kill list 
   if ( $split_entry[34] =~ /^Bu6$/ ) # get only those sources that are original work by Butler 
   {
+# Step 2 of 3: this FOR loops checks whether the planet is in the kill list 
     for ( my $k = 0 ; $k <= $#kill_list ; $k++ )
     {
  #     print "kill_list: $kill_list[$k]\n";
@@ -78,8 +97,8 @@ for ( my $j = 38; $j <= $#array; $j++ )
     {
       print $fh2 "$split_entry[1] $split_entry[2] $split_entry[4] $split_entry[5] $split_entry[7] $split_entry[8] $split_entry[10] $split_entry[11] $split_entry[13] $split_entry[14] $split_entry[16] $split_entry[18] $split_entry[24]$split_entry[25] $split_entry[27] $split_entry[28] $split_entry[34]\n";
       $outbound_hash{'plnorbper'} = $split_entry[4];
-      $outbound_hash{'plnorbtpererr1'} = "$split_entry[5]";
-      $outbound_hash{'plnorbtpererr2'} = -"$split_entry[5]";
+      $outbound_hash{'plnorbtpererr1'} = $split_entry[5];
+      $outbound_hash{'plnorbtpererr2'} = -$split_entry[5];
       $outbound_hash{'plnrvamp'} = $split_entry[7];
       $outbound_hash{'plnrvamperr1'} = $split_entry[8];
       $outbound_hash{'plnrvamperr2'} = -$split_entry[8];
@@ -87,8 +106,11 @@ for ( my $j = 38; $j <= $#array; $j++ )
       $outbound_hash{'plnorbeccenerr1'} = $split_entry[11];
       $outbound_hash{'plnorbeccenerr2'} = -$split_entry[11];
       $outbound_hash{'plnorblper'} = $split_entry[13];
-      $outbound_hash{'plnorblpererr1'} = $split_entry[14];
-      $outbound_hash{'plnorblpererr2'} = -$split_entry[14];
+      if ( length($split_entry[14]) > 0 )
+      {
+        $outbound_hash{'plnorblpererr1'} = $split_entry[14];
+        $outbound_hash{'plnorblpererr2'} = -$split_entry[14];
+      }
       $outbound_hash{'plnorbtper'} = $split_entry[16];
       $outbound_hash{'plnorbtpererr1'} = $split_entry[18];
       $outbound_hash{'plnorbtpererr2'} = -$split_entry[18];
