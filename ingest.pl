@@ -31,6 +31,7 @@ close ($fh);
 
 open ( my $fh2, '>', $outputfile ) or die "\nCould not open file $outputfile $!\n";
 
+my %outbound_hash = ();
 my @split_entry;
 # Line 38 is the beginning of the data 
 for ( my $j = 38; $j <= $#array; $j++ )
@@ -61,7 +62,7 @@ for ( my $j = 38; $j <= $#array; $j++ )
 # $split_entry[28] : plnorbsmaxerr1 / plnorbsmaxerr2 
   my $reject = 0; #initialize reject variable: "0" = keep | "1" = reject 
   my $planet_name = "$split_entry[1]"." "."$split_entry[2]";
-#  print "My planet name is $planet_name\n";
+  print "My planet name is $planet_name\n";
 
 
 # Step 1 of 3: this IF block only considers original research done by Butler 2006 
@@ -76,6 +77,30 @@ for ( my $j = 38; $j <= $#array; $j++ )
     if ( $reject == 0 ) # if $planet_name is not in the kill list, then print this planet 
     {
       print $fh2 "$split_entry[1] $split_entry[2] $split_entry[4] $split_entry[5] $split_entry[7] $split_entry[8] $split_entry[10] $split_entry[11] $split_entry[13] $split_entry[14] $split_entry[16] $split_entry[18] $split_entry[24]$split_entry[25] $split_entry[27] $split_entry[28] $split_entry[34]\n";
+      $outbound_hash{'plnorbper'} = $split_entry[4];
+      $outbound_hash{'plnorbtpererr1'} = "$split_entry[5]";
+      $outbound_hash{'plnorbtpererr2'} = -"$split_entry[5]";
+      $outbound_hash{'plnrvamp'} = $split_entry[7];
+      $outbound_hash{'plnrvamperr1'} = $split_entry[8];
+      $outbound_hash{'plnrvamperr2'} = -$split_entry[8];
+      $outbound_hash{'plnorbeccen'} = $split_entry[10];
+      $outbound_hash{'plnorbeccenerr1'} = $split_entry[11];
+      $outbound_hash{'plnorbeccenerr2'} = -$split_entry[11];
+      $outbound_hash{'plnorblper'} = $split_entry[13];
+      $outbound_hash{'plnorblpererr1'} = $split_entry[14];
+      $outbound_hash{'plnorblpererr2'} = -$split_entry[14];
+      $outbound_hash{'plnorbtper'} = $split_entry[16];
+      $outbound_hash{'plnorbtpererr1'} = $split_entry[18];
+      $outbound_hash{'plnorbtpererr2'} = -$split_entry[18];
+      $outbound_hash{'plnmsinij'} = $split_entry[24];
+      $outbound_hash{'plnmsinijerr1'} = $split_entry[25];
+      $outbound_hash{'plnmsinijerr2'} = -$split_entry[25];
+      $outbound_hash{'plnorbsmax'} = $split_entry[27];
+      $outbound_hash{'plnorbsmaxerr1'} = $split_entry[28];
+      $outbound_hash{'plnorbsmaxerr2'} = -$split_entry[28];
+
+      $outbound_hash{'plnorbperlim'} = 0;
+      $outbound_hash{'plnrvamplim'} = 0;
     }
   } # end IF block Bu6
 } # end FOR loop array
