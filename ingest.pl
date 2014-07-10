@@ -31,7 +31,9 @@ close ($fh);
 
 open ( my $fh2, '>', $outputfile ) or die "\nCould not open file $outputfile $!\n";
 
-my %outbound_hash = ();
+# my %outbound_hash = ();
+my @outbound_array = ();
+
 my @split_entry;
 # Line 38 is the beginning of the data 
 for ( my $j = 38; $j <= $#array; $j++ )
@@ -96,38 +98,42 @@ for ( my $j = 38; $j <= $#array; $j++ )
     if ( $reject == 0 ) # if $planet_name is not in the kill list, then print this planet 
     {
       print $fh2 "$split_entry[1] $split_entry[2] $split_entry[4] $split_entry[5] $split_entry[7] $split_entry[8] $split_entry[10] $split_entry[11] $split_entry[13] $split_entry[14] $split_entry[16] $split_entry[18] $split_entry[24]$split_entry[25] $split_entry[27] $split_entry[28] $split_entry[34]\n";
-      $outbound_hash{'plnorbper'} = $split_entry[4];
-      $outbound_hash{'plnorbtpererr1'} = $split_entry[5];
-      $outbound_hash{'plnorbtpererr2'} = -$split_entry[5];
-      $outbound_hash{'plnrvamp'} = $split_entry[7];
-      $outbound_hash{'plnrvamperr1'} = $split_entry[8];
-      $outbound_hash{'plnrvamperr2'} = -$split_entry[8];
-      $outbound_hash{'plnorbeccen'} = $split_entry[10];
-      $outbound_hash{'plnorbeccenerr1'} = $split_entry[11];
-      $outbound_hash{'plnorbeccenerr2'} = -$split_entry[11];
-      $outbound_hash{'plnorblper'} = $split_entry[13];
+      $outbound_array[$j]{'plnorbper'} = $split_entry[4];
+      $outbound_array[$j]{'plnorbtpererr1'} = $split_entry[5];
+      $outbound_array[$j]{'plnorbtpererr2'} = -$split_entry[5];
+      $outbound_array[$j]{'plnrvamp'} = $split_entry[7];
+      $outbound_array[$j]{'plnrvamperr1'} = $split_entry[8];
+      $outbound_array[$j]{'plnrvamperr2'} = -$split_entry[8];
+      $outbound_array[$j]{'plnorbeccen'} = $split_entry[10];
+      $outbound_array[$j]{'plnorbeccenerr1'} = $split_entry[11];
+      $outbound_array[$j]{'plnorbeccenerr2'} = -$split_entry[11];
+      $outbound_array[$j]{'plnorblper'} = $split_entry[13];
       if ( length($split_entry[14]) > 0 )
       {
-        $outbound_hash{'plnorblpererr1'} = $split_entry[14];
-        $outbound_hash{'plnorblpererr2'} = -$split_entry[14];
+        $outbound_array[$j]{'plnorblpererr1'} = $split_entry[14];
+        $outbound_array[$j]{'plnorblpererr2'} = -$split_entry[14];
       }
-      $outbound_hash{'plnorbtper'} = $split_entry[16];
-      $outbound_hash{'plnorbtpererr1'} = $split_entry[18];
-      $outbound_hash{'plnorbtpererr2'} = -$split_entry[18];
-      $outbound_hash{'plnmsinij'} = $split_entry[24];
-      $outbound_hash{'plnmsinijerr1'} = $split_entry[25];
-      $outbound_hash{'plnmsinijerr2'} = -$split_entry[25];
-      $outbound_hash{'plnorbsmax'} = $split_entry[27];
-      $outbound_hash{'plnorbsmaxerr1'} = $split_entry[28];
-      $outbound_hash{'plnorbsmaxerr2'} = -$split_entry[28];
+      $outbound_array[$j]{'plnorbtper'} = $split_entry[16];
+      $outbound_array[$j]{'plnorbtpererr1'} = $split_entry[18];
+      $outbound_array[$j]{'plnorbtpererr2'} = -$split_entry[18];
+      $outbound_array[$j]{'plnmsinij'} = $split_entry[24];
+      $outbound_array[$j]{'plnmsinijerr1'} = $split_entry[25];
+      $outbound_array[$j]{'plnmsinijerr2'} = -$split_entry[25];
+      $outbound_array[$j]{'plnorbsmax'} = $split_entry[27];
+      $outbound_array[$j]{'plnorbsmaxerr1'} = $split_entry[28];
+      $outbound_array[$j]{'plnorbsmaxerr2'} = -$split_entry[28];
 
-      $outbound_hash{'plnorbperlim'} = 0;
-      $outbound_hash{'plnrvamplim'} = 0;
+      $outbound_array[$j]{'plnorbperlim'} = 0;
+      $outbound_array[$j]{'plnrvamplim'} = 0;
     }
   } # end IF block Bu6
 } # end FOR loop array
 
 close ($fh2);
+
+# Sanity check. Check the array of hashes. 
+my $file_no = scalar (@outbound_array); 
+print "Array of hashes: there are $file_no hashes.\n";
 
 # Create hash keys from the column headers 
 my @splitarray = split(/,/, $array[36]); # Line 36 are the column headers 
