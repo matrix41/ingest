@@ -79,7 +79,8 @@ for ( my $j = 38; $j <= $#array; $j++ )
     {
       print "$j $split_entry[1] $split_entry[2] $split_entry[4] $split_entry[5] $split_entry[7] $split_entry[8] $split_entry[10] $split_entry[11] $split_entry[13] $split_entry[14] $split_entry[16] $split_entry[18] $split_entry[24]$split_entry[25] $split_entry[27] $split_entry[28] $split_entry[34]\n";
       print $fh2 "$split_entry[1] $split_entry[2] $split_entry[4] $split_entry[5] $split_entry[7] $split_entry[8] $split_entry[10] $split_entry[11] $split_entry[13] $split_entry[14] $split_entry[16] $split_entry[18] $split_entry[24]$split_entry[25] $split_entry[27] $split_entry[28] $split_entry[34]\n";
-      $outbound_hash{'plnname'} = "$split_entry[1]"." $split_entry[2]";
+      $outbound_hash{'plnname'} = $split_entry[1]; 
+      $outbound_hash{'plnletter'} = $split_entry[2];
       $outbound_hash{'plnorbper'} = $split_entry[4];
       $outbound_hash{'plnorbtpererr1'} = $split_entry[5];
       $outbound_hash{'plnorbtpererr2'} = -$split_entry[5];
