@@ -135,10 +135,11 @@ for ( my $j = 38; $j <= $#array; $j++ )
 
 close ($fh2);
 
-# Sanity check. Check the array of hashes. 
+# Sanity check I. Check the array of hashes. 
 my $file_no = scalar(@outbound_array); 
 print "Array of hashes: there are $file_no hashes.\n";
 
+# Sanity check II. Check the array of hashes. 
 for ( my $p = 0 ; $p <= $#outbound_array ; $p++ )
 {
   print "outbound_array $p = $outbound_array[$p]{'plnname'}\n";
