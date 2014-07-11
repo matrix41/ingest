@@ -41,25 +41,6 @@ for ( my $j = 38; $j <= $#array; $j++ )
 {
 #  print $array[$j];
   @split_entry = split( /,/, $array[$j] );
-
-
-# THIS CHUNK OF COMMENTED CODE WAS USED TO DIAGNOSE PROBLEM 
-# WHERE THE FIELD WAS DEFINED BUT HAD ZERO LENGTH  
-# # this FOR-loop will check for undef fields
-# # this FOR-loop will check for blank spaces in each field 
-#   for ( my $n = 0 ; $n <= $#split_entry ; $n++ )
-#   {
-# #    if ( !defined $split_entry[$n] )
-# #    if ( $split_entry[$n] =~ /^\s+$/ )
-#     if ( $n == 14 )
-#     {
-# #      print "$n is undef\n";
-#       print "Index 14 = ||$split_entry[$n]||\n";
-#       print "Index 14 length is ", length($split_entry[$n]), "\n";
-#     }
-#   }
-
-
 #  print "$split_entry[0]  $split_entry[1]  $split_entry[2]  $split_entry[3]\n";
   # print "\nset heading off\n";
   # print "select OBJECTID, ALIASDIS\n";
@@ -87,9 +68,9 @@ for ( my $j = 38; $j <= $#array; $j++ )
   print "My planet name is $planet_name\n";
 
 # Step 1 of 3: this IF block only considers original research done by Butler 2006 
+# Step 2 of 3: this FOR loops checks whether the planet is in the kill list 
   if ( $split_entry[34] =~ /^Bu6$/ ) # get only those sources that are original work by Butler 
   {
-# Step 2 of 3: this FOR loops checks whether the planet is in the kill list 
     for ( my $k = 0 ; $k <= $#kill_list ; $k++ )
     {
  #     print "kill_list: $kill_list[$k]\n";
@@ -99,36 +80,30 @@ for ( my $j = 38; $j <= $#array; $j++ )
     {
       print "$j $split_entry[1] $split_entry[2] $split_entry[4] $split_entry[5] $split_entry[7] $split_entry[8] $split_entry[10] $split_entry[11] $split_entry[13] $split_entry[14] $split_entry[16] $split_entry[18] $split_entry[24]$split_entry[25] $split_entry[27] $split_entry[28] $split_entry[34]\n";
       print $fh2 "$split_entry[1] $split_entry[2] $split_entry[4] $split_entry[5] $split_entry[7] $split_entry[8] $split_entry[10] $split_entry[11] $split_entry[13] $split_entry[14] $split_entry[16] $split_entry[18] $split_entry[24]$split_entry[25] $split_entry[27] $split_entry[28] $split_entry[34]\n";
-      $outbound_array[$outbound_array_cntr]{'plnname'} = "$split_entry[1]"." $split_entry[2]";
-      $outbound_array[$outbound_array_cntr]{'plnorbper'} = $split_entry[4];
-      $outbound_array[$outbound_array_cntr]{'plnorbtpererr1'} = $split_entry[5];
-      $outbound_array[$outbound_array_cntr]{'plnorbtpererr2'} = -$split_entry[5];
-      $outbound_array[$outbound_array_cntr]{'plnrvamp'} = $split_entry[7];
-      $outbound_array[$outbound_array_cntr]{'plnrvamperr1'} = $split_entry[8];
-      $outbound_array[$outbound_array_cntr]{'plnrvamperr2'} = -$split_entry[8];
-      $outbound_array[$outbound_array_cntr]{'plnorbeccen'} = $split_entry[10];
-      $outbound_array[$outbound_array_cntr]{'plnorbeccenerr1'} = $split_entry[11];
-      $outbound_array[$outbound_array_cntr]{'plnorbeccenerr2'} = -$split_entry[11];
-      $outbound_array[$outbound_array_cntr]{'plnorblper'} = $split_entry[13];
-      if ( length($split_entry[14]) > 0 )
-      {
-        $outbound_array[$outbound_array_cntr]{'plnorblpererr1'} = $split_entry[14];
-        $outbound_array[$outbound_array_cntr]{'plnorblpererr2'} = -$split_entry[14];
-      }
-      $outbound_array[$outbound_array_cntr]{'plnorbtper'} = $split_entry[16];
-      $outbound_array[$outbound_array_cntr]{'plnorbtpererr1'} = $split_entry[18];
-      $outbound_array[$outbound_array_cntr]{'plnorbtpererr2'} = -$split_entry[18];
-      $outbound_array[$outbound_array_cntr]{'plnmsinij'} = $split_entry[24];
-      $outbound_array[$outbound_array_cntr]{'plnmsinijerr1'} = $split_entry[25];
-      $outbound_array[$outbound_array_cntr]{'plnmsinijerr2'} = -$split_entry[25];
-      $outbound_array[$outbound_array_cntr]{'plnorbsmax'} = $split_entry[27];
-      $outbound_array[$outbound_array_cntr]{'plnorbsmaxerr1'} = $split_entry[28];
-      $outbound_array[$outbound_array_cntr]{'plnorbsmaxerr2'} = -$split_entry[28];
+      $outbound_hash{'plnorbper'} = $split_entry[4];
+      $outbound_hash{'plnorbtpererr1'} = "$split_entry[5]";
+      $outbound_hash{'plnorbtpererr2'} = -"$split_entry[5]";
+      $outbound_hash{'plnrvamp'} = $split_entry[7];
+      $outbound_hash{'plnrvamperr1'} = $split_entry[8];
+      $outbound_hash{'plnrvamperr2'} = -$split_entry[8];
+      $outbound_hash{'plnorbeccen'} = $split_entry[10];
+      $outbound_hash{'plnorbeccenerr1'} = $split_entry[11];
+      $outbound_hash{'plnorbeccenerr2'} = -$split_entry[11];
+      $outbound_hash{'plnorblper'} = $split_entry[13];
+      $outbound_hash{'plnorblpererr1'} = $split_entry[14];
+      $outbound_hash{'plnorblpererr2'} = -$split_entry[14];
+      $outbound_hash{'plnorbtper'} = $split_entry[16];
+      $outbound_hash{'plnorbtpererr1'} = $split_entry[18];
+      $outbound_hash{'plnorbtpererr2'} = -$split_entry[18];
+      $outbound_hash{'plnmsinij'} = $split_entry[24];
+      $outbound_hash{'plnmsinijerr1'} = $split_entry[25];
+      $outbound_hash{'plnmsinijerr2'} = -$split_entry[25];
+      $outbound_hash{'plnorbsmax'} = $split_entry[27];
+      $outbound_hash{'plnorbsmaxerr1'} = $split_entry[28];
+      $outbound_hash{'plnorbsmaxerr2'} = -$split_entry[28];
 
-      $outbound_array[$outbound_array_cntr]{'plnorbperlim'} = 0;
-      $outbound_array[$outbound_array_cntr]{'plnrvamplim'} = 0;
-
-      $outbound_array_cntr += 1;
+      $outbound_hash{'plnorbperlim'} = 0;
+      $outbound_hash{'plnrvamplim'} = 0;
     }
   } # end IF block Bu6
 } # end FOR loop array
