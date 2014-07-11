@@ -88,8 +88,11 @@ for ( my $j = 38; $j <= $#array; $j++ )
       $outbound_hash{'plnorbeccenerr1'} = $split_entry[11];
       $outbound_hash{'plnorbeccenerr2'} = -$split_entry[11];
       $outbound_hash{'plnorblper'} = $split_entry[13];
-      $outbound_hash{'plnorblpererr1'} = $split_entry[14];
-      $outbound_hash{'plnorblpererr2'} = -$split_entry[14];
+      if ( length($split_entry[14]) > 0 )
+      {
+        $outbound_hash{'plnorblpererr1'} = $split_entry[14];
+        $outbound_hash{'plnorblpererr2'} = -$split_entry[14];
+      }
       $outbound_hash{'plnorbtper'} = $split_entry[16];
       $outbound_hash{'plnorbtpererr1'} = $split_entry[18];
       $outbound_hash{'plnorbtpererr2'} = -$split_entry[18];
