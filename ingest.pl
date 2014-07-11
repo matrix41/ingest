@@ -33,6 +33,7 @@ open ( my $fh2, '>', $outputfile ) or die "\nCould not open file $outputfile $!\
 
 # my %outbound_hash = ();
 my @outbound_array = ();
+my $outbound_array_cntr = 0;
 
 my @split_entry;
 # Line 38 is the beginning of the data 
@@ -85,7 +86,6 @@ for ( my $j = 38; $j <= $#array; $j++ )
   my $planet_name = "$split_entry[1]"." "."$split_entry[2]";
   print "My planet name is $planet_name\n";
 
-
 # Step 1 of 3: this IF block only considers original research done by Butler 2006 
   if ( $split_entry[34] =~ /^Bu6$/ ) # get only those sources that are original work by Butler 
   {
@@ -97,34 +97,38 @@ for ( my $j = 38; $j <= $#array; $j++ )
     }
     if ( $reject == 0 ) # if $planet_name is not in the kill list, then print this planet 
     {
+      print "$j $split_entry[1] $split_entry[2] $split_entry[4] $split_entry[5] $split_entry[7] $split_entry[8] $split_entry[10] $split_entry[11] $split_entry[13] $split_entry[14] $split_entry[16] $split_entry[18] $split_entry[24]$split_entry[25] $split_entry[27] $split_entry[28] $split_entry[34]\n";
       print $fh2 "$split_entry[1] $split_entry[2] $split_entry[4] $split_entry[5] $split_entry[7] $split_entry[8] $split_entry[10] $split_entry[11] $split_entry[13] $split_entry[14] $split_entry[16] $split_entry[18] $split_entry[24]$split_entry[25] $split_entry[27] $split_entry[28] $split_entry[34]\n";
-      $outbound_array[$j]{'plnorbper'} = $split_entry[4];
-      $outbound_array[$j]{'plnorbtpererr1'} = $split_entry[5];
-      $outbound_array[$j]{'plnorbtpererr2'} = -$split_entry[5];
-      $outbound_array[$j]{'plnrvamp'} = $split_entry[7];
-      $outbound_array[$j]{'plnrvamperr1'} = $split_entry[8];
-      $outbound_array[$j]{'plnrvamperr2'} = -$split_entry[8];
-      $outbound_array[$j]{'plnorbeccen'} = $split_entry[10];
-      $outbound_array[$j]{'plnorbeccenerr1'} = $split_entry[11];
-      $outbound_array[$j]{'plnorbeccenerr2'} = -$split_entry[11];
-      $outbound_array[$j]{'plnorblper'} = $split_entry[13];
+      $outbound_array[$outbound_array_cntr]{'plnname'} = "$split_entry[1]"." $split_entry[2]";
+      $outbound_array[$outbound_array_cntr]{'plnorbper'} = $split_entry[4];
+      $outbound_array[$outbound_array_cntr]{'plnorbtpererr1'} = $split_entry[5];
+      $outbound_array[$outbound_array_cntr]{'plnorbtpererr2'} = -$split_entry[5];
+      $outbound_array[$outbound_array_cntr]{'plnrvamp'} = $split_entry[7];
+      $outbound_array[$outbound_array_cntr]{'plnrvamperr1'} = $split_entry[8];
+      $outbound_array[$outbound_array_cntr]{'plnrvamperr2'} = -$split_entry[8];
+      $outbound_array[$outbound_array_cntr]{'plnorbeccen'} = $split_entry[10];
+      $outbound_array[$outbound_array_cntr]{'plnorbeccenerr1'} = $split_entry[11];
+      $outbound_array[$outbound_array_cntr]{'plnorbeccenerr2'} = -$split_entry[11];
+      $outbound_array[$outbound_array_cntr]{'plnorblper'} = $split_entry[13];
       if ( length($split_entry[14]) > 0 )
       {
-        $outbound_array[$j]{'plnorblpererr1'} = $split_entry[14];
-        $outbound_array[$j]{'plnorblpererr2'} = -$split_entry[14];
+        $outbound_array[$outbound_array_cntr]{'plnorblpererr1'} = $split_entry[14];
+        $outbound_array[$outbound_array_cntr]{'plnorblpererr2'} = -$split_entry[14];
       }
-      $outbound_array[$j]{'plnorbtper'} = $split_entry[16];
-      $outbound_array[$j]{'plnorbtpererr1'} = $split_entry[18];
-      $outbound_array[$j]{'plnorbtpererr2'} = -$split_entry[18];
-      $outbound_array[$j]{'plnmsinij'} = $split_entry[24];
-      $outbound_array[$j]{'plnmsinijerr1'} = $split_entry[25];
-      $outbound_array[$j]{'plnmsinijerr2'} = -$split_entry[25];
-      $outbound_array[$j]{'plnorbsmax'} = $split_entry[27];
-      $outbound_array[$j]{'plnorbsmaxerr1'} = $split_entry[28];
-      $outbound_array[$j]{'plnorbsmaxerr2'} = -$split_entry[28];
+      $outbound_array[$outbound_array_cntr]{'plnorbtper'} = $split_entry[16];
+      $outbound_array[$outbound_array_cntr]{'plnorbtpererr1'} = $split_entry[18];
+      $outbound_array[$outbound_array_cntr]{'plnorbtpererr2'} = -$split_entry[18];
+      $outbound_array[$outbound_array_cntr]{'plnmsinij'} = $split_entry[24];
+      $outbound_array[$outbound_array_cntr]{'plnmsinijerr1'} = $split_entry[25];
+      $outbound_array[$outbound_array_cntr]{'plnmsinijerr2'} = -$split_entry[25];
+      $outbound_array[$outbound_array_cntr]{'plnorbsmax'} = $split_entry[27];
+      $outbound_array[$outbound_array_cntr]{'plnorbsmaxerr1'} = $split_entry[28];
+      $outbound_array[$outbound_array_cntr]{'plnorbsmaxerr2'} = -$split_entry[28];
 
-      $outbound_array[$j]{'plnorbperlim'} = 0;
-      $outbound_array[$j]{'plnrvamplim'} = 0;
+      $outbound_array[$outbound_array_cntr]{'plnorbperlim'} = 0;
+      $outbound_array[$outbound_array_cntr]{'plnrvamplim'} = 0;
+
+      $outbound_array_cntr += 1;
     }
   } # end IF block Bu6
 } # end FOR loop array
@@ -132,8 +136,13 @@ for ( my $j = 38; $j <= $#array; $j++ )
 close ($fh2);
 
 # Sanity check. Check the array of hashes. 
-my $file_no = scalar (@outbound_array); 
+my $file_no = scalar(@outbound_array); 
 print "Array of hashes: there are $file_no hashes.\n";
+
+for ( my $p = 0 ; $p <= $#outbound_array ; $p++ )
+{
+  print "outbound_array $p = $outbound_array[$p]{'plnname'}\n";
+}
 
 # Create hash keys from the column headers 
 my @splitarray = split(/,/, $array[36]); # Line 36 are the column headers 
