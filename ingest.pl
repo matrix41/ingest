@@ -68,9 +68,9 @@ for ( my $j = 38; $j <= $#array; $j++ )
   print "My planet name is $planet_name\n";
 
 # Step 1 of 3: this IF block only considers original research done by Butler 2006 
-# Step 2 of 3: this FOR loops checks whether the planet is in the kill list 
   if ( $split_entry[34] =~ /^Bu6$/ ) # get only those sources that are original work by Butler 
   {
+# Step 2 of 3: this FOR loops checks whether the planet is in the kill list 
     for ( my $k = 0 ; $k <= $#kill_list ; $k++ )
     {
  #     print "kill_list: $kill_list[$k]\n";
@@ -81,8 +81,8 @@ for ( my $j = 38; $j <= $#array; $j++ )
       print "$j $split_entry[1] $split_entry[2] $split_entry[4] $split_entry[5] $split_entry[7] $split_entry[8] $split_entry[10] $split_entry[11] $split_entry[13] $split_entry[14] $split_entry[16] $split_entry[18] $split_entry[24]$split_entry[25] $split_entry[27] $split_entry[28] $split_entry[34]\n";
       print $fh2 "$split_entry[1] $split_entry[2] $split_entry[4] $split_entry[5] $split_entry[7] $split_entry[8] $split_entry[10] $split_entry[11] $split_entry[13] $split_entry[14] $split_entry[16] $split_entry[18] $split_entry[24]$split_entry[25] $split_entry[27] $split_entry[28] $split_entry[34]\n";
       $outbound_hash{'plnorbper'} = $split_entry[4];
-      $outbound_hash{'plnorbtpererr1'} = "$split_entry[5]";
-      $outbound_hash{'plnorbtpererr2'} = -"$split_entry[5]";
+      $outbound_hash{'plnorbtpererr1'} = $split_entry[5];
+      $outbound_hash{'plnorbtpererr2'} = -$split_entry[5];
       $outbound_hash{'plnrvamp'} = $split_entry[7];
       $outbound_hash{'plnrvamperr1'} = $split_entry[8];
       $outbound_hash{'plnrvamperr2'} = -$split_entry[8];
@@ -110,15 +110,6 @@ for ( my $j = 38; $j <= $#array; $j++ )
 
 close ($fh2);
 
-# Sanity check I. Check the array of hashes. 
-my $file_no = scalar(@outbound_array); 
-print "Array of hashes: there are $file_no hashes.\n";
-
-# Sanity check II. Check the array of hashes. 
-for ( my $p = 0 ; $p <= $#outbound_array ; $p++ )
-{
-  print "outbound_array $p = $outbound_array[$p]{'plnname'}\n";
-}
 
 # Create hash keys from the column headers 
 my @splitarray = split(/,/, $array[36]); # Line 36 are the column headers 
