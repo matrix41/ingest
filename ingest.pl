@@ -31,9 +31,7 @@ close ($fh);
 
 open ( my $fh2, '>', $outputfile ) or die "\nCould not open file $outputfile $!\n";
 
-# my %outbound_hash = ();
-my @outbound_array = ();
-my $outbound_array_cntr = 0;
+my %outbound_hash = ();
 
 my @split_entry;
 # Line 38 is the beginning of the data 
@@ -110,7 +108,7 @@ for ( my $j = 38; $j <= $#array; $j++ )
 
 close ($fh2);
 
-
+  
 # Create hash keys from the column headers 
 my @splitarray = split(/,/, $array[36]); # Line 36 are the column headers 
 
