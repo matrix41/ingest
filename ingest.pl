@@ -82,8 +82,8 @@ for ( my $j = 38; $j <= $#array; $j++ )
       $outbound_hash{'plnname'} = $split_entry[1]; 
       $outbound_hash{'plnletter'} = $split_entry[2];
       $outbound_hash{'plnorbper'} = $split_entry[4];
-      $outbound_hash{'plnorbtpererr1'} = $split_entry[5];
-      $outbound_hash{'plnorbtpererr2'} = -$split_entry[5];
+      $outbound_hash{'plnorbpererr1'} = $split_entry[5];
+      $outbound_hash{'plnorbpererr2'} = -$split_entry[5];
       $outbound_hash{'plnrvamp'} = $split_entry[7];
       $outbound_hash{'plnrvamperr1'} = $split_entry[8];
       $outbound_hash{'plnrvamperr2'} = -$split_entry[8];
@@ -107,7 +107,12 @@ for ( my $j = 38; $j <= $#array; $j++ )
       $outbound_hash{'plnorbsmaxerr2'} = -$split_entry[28];
 
       $outbound_hash{'plnorbperlim'} = 0;
+      $outbound_hash{'plnorbsmaxlim'} = 0;
+      $outbound_hash{'plnorbtperlim'} = 0;
+      $outbound_hash{'plnorbeccenlim'} = 0;
+      $outbound_hash{'plnorblperlim'} = 0;
       $outbound_hash{'plnrvamplim'} = 0;
+      $outbound_hash{'plnmsinilim'} = 0;
 
   # Now pass outbound_hash to my subroutine make_edm
       make_edm( %outbound_hash );
