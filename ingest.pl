@@ -113,6 +113,7 @@ for ( my $j = 38; $j <= $#array; $j++ )
       $outbound_hash{'plnorblperlim'} = 0;
       $outbound_hash{'plnrvamplim'} = 0;
       $outbound_hash{'plnmsinilim'} = 0;
+      $outbound_hash{'plnrefid'} = 175;
 
   # Now pass outbound_hash to my subroutine make_edm
       make_edm( %outbound_hash );
