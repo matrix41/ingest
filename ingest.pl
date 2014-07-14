@@ -64,7 +64,7 @@ for ( my $j = 38; $j <= $#array; $j++ )
 # $split_entry[28] : plnorbsmaxerr1 / plnorbsmaxerr2 
   my $reject = 0; #initialize reject variable: "0" = keep | "1" = reject 
   my $planet_name = "$split_entry[1]"." "."$split_entry[2]";
-  print "My planet name is $planet_name\n";
+#  print "My planet name is $planet_name\n";
 
 # Step 1 of 3: this IF block only considers original research done by Butler 2006 
   if ( $split_entry[34] =~ /^Bu6$/ ) # get only those sources that are original work by Butler 
@@ -77,7 +77,7 @@ for ( my $j = 38; $j <= $#array; $j++ )
     }
     if ( $reject == 0 ) # if $planet_name is not in the kill list, then print this planet 
     {
-      print "$j $split_entry[1] $split_entry[2] $split_entry[4] $split_entry[5] $split_entry[7] $split_entry[8] $split_entry[10] $split_entry[11] $split_entry[13] $split_entry[14] $split_entry[16] $split_entry[18] $split_entry[24]$split_entry[25] $split_entry[27] $split_entry[28] $split_entry[34]\n";
+#      print "$j $split_entry[1] $split_entry[2] $split_entry[4] $split_entry[5] $split_entry[7] $split_entry[8] $split_entry[10] $split_entry[11] $split_entry[13] $split_entry[14] $split_entry[16] $split_entry[18] $split_entry[24]$split_entry[25] $split_entry[27] $split_entry[28] $split_entry[34]\n";
       print $fh2 "$split_entry[1] $split_entry[2] $split_entry[4] $split_entry[5] $split_entry[7] $split_entry[8] $split_entry[10] $split_entry[11] $split_entry[13] $split_entry[14] $split_entry[16] $split_entry[18] $split_entry[24]$split_entry[25] $split_entry[27] $split_entry[28] $split_entry[34]\n";
       $outbound_hash{'plnname'} = $split_entry[1]; 
       $outbound_hash{'plnletter'} = $split_entry[2];
@@ -167,10 +167,4 @@ while ( my ($key, $value) = each(%butler_hash) )
   }
 }
 
-# print "$splitarray[1]\n";
-# print "$splitarray[2]\n";
-# print "$splitarray[3]\n";
-# print "$splitarray[4]\n";
-# print "$splitarray[5]\n";
-# print "$splitarray[6]\n";
 
