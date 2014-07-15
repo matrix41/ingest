@@ -9,10 +9,33 @@ use func_ppar2;
 #Define: 
 my $inputfile = 'J_ApJ_646_505_table3-140624.csv';
 my $outputfile = 'butler_table3a.txt';
-my @kill_list = ("HD 142 b", "HD 1237 b", "HD 10647 b", "HD 13445 b", "79 Cet b", "HD 83443 b", 
-                 "HD 102117 b", "HD 107148 b", "HD 108147 b", "HD 111232 b", "HD 114762 b", 
-                 "HD 114729 b", "70 Vir b", "HD 117207 b", "HD 117618 b", "HD 164922 b", 
-                 "16 Cyg B b", "51 Peg b", "HD 136118 b");
+
+my @kill_list;
+push(@kill_list, "HD 142 b"); # 1 of 18 existing REFID=175 planets 
+push(@kill_list, "HD 1237 b"); # 2 of 18 existing REFID=175 planets 
+push(@kill_list, "HD 10647 b"); # 3 of 18 existing REFID=175 planets 
+push(@kill_list, "HD 13445 b"); # 4 of 18 existing REFID=175 planets 
+push(@kill_list, "79 Cet b"); # 5 of 18 existing REFID=175 planets 
+push(@kill_list, "HD 83443 b"); # 6 of 18 existing REFID=175 planets 
+push(@kill_list, "HD 102117 b"); # 7 of 18 existing REFID=175 planets 
+push(@kill_list, "HD 107148 b"); # 8 of 18 existing REFID=175 planets 
+push(@kill_list, "HD 108147 b"); # 9 of 18 existing REFID=175 planets 
+push(@kill_list, "HD 111232 b"); # 10 of 18 existing REFID=175 planets 
+push(@kill_list, "HD 114762 b"); # 11 of 18 existing REFID=175 planets 
+push(@kill_list, "HD 114729 b"); # 12 of 18 existing REFID=175 planets 
+push(@kill_list, "70 Vir b"); # 13 of 18 existing REFID=175 planets 
+push(@kill_list, "HD 117207 b"); # 14 of 18 existing REFID=175 planets 
+push(@kill_list, "HD 117618 b"); # 15 of 18 existing REFID=175 planets 
+push(@kill_list, "HD 164922 b"); # 16 of 18 existing REFID=175 planets 
+push(@kill_list, "16 Cyg B b"); # 17 of 18 existing REFID=175 planets 
+push(@kill_list, "51 Peg b"); # 18 of 18 existing REFID=175 planets 
+push(@kill_list, "HD 136118 b"); # brown dwarf 
+push(@kill_list, "HD 137510 b"); # brown dwarf 
+push(@kill_list, "HD 168746 b"); # Tracy recently updated this planet (formerly REFID=96) (7/8/14)
+push(@kill_list, "HD 179949 b"); # Tracy recently updated this planet (formerly REFID=96) (7/8/14)
+push(@kill_list, "HD 33636 b"); # already on the Removed Targets List
+push(@kill_list, "HD 150706 b"); # Tracy will personally add/default this planet to DB (7/8/14)
+
 
 #Declare new filehandle and associated it with filename
 open (my $fh, '<', $inputfile) or die "\nCould not open file '$inputfile' $!\n";
@@ -114,6 +137,7 @@ for ( my $j = 38; $j <= $#array; $j++ )
       $outbound_hash{'plnrvamplim'} = 0;
       $outbound_hash{'plnmsinilim'} = 0;
       $outbound_hash{'plnrefid'} = 175;
+      $outbound_hash{'plnorbmethod'} = "RV";
 
   # Now pass outbound_hash to my subroutine make_edm
       make_edm( %outbound_hash );
