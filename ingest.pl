@@ -98,6 +98,9 @@ for ( my $j = 38; $j <= $#array; $j++ )
  #     print "kill_list: $kill_list[$k]\n";
       $reject = 1 if ( $planet_name =~ /$kill_list[$k]/ )
     }
+# Step 3 of 3: after looping through the entire kill list in Step 2, generate 
+# the .edm planet parameter file by a.) loading the hash $outbound_hash, and 
+# b.) sending hash to subroutine make_edm.  
     if ( $reject == 0 ) # if $planet_name is not in the kill list, then print this planet 
     {
 #      print "$j $split_entry[1] $split_entry[2] $split_entry[4] $split_entry[5] $split_entry[7] $split_entry[8] $split_entry[10] $split_entry[11] $split_entry[13] $split_entry[14] $split_entry[16] $split_entry[18] $split_entry[24]$split_entry[25] $split_entry[27] $split_entry[28] $split_entry[34]\n";
@@ -119,9 +122,9 @@ for ( my $j = 38; $j <= $#array; $j++ )
         $outbound_hash{'plnorblpererr1'} = $split_entry[14];
         $outbound_hash{'plnorblpererr2'} = -$split_entry[14];
       }
-      $outbound_hash{'plnorbtper'} = $split_entry[16];
-      $outbound_hash{'plnorbtpererr1'} = $split_entry[18];
-      $outbound_hash{'plnorbtpererr2'} = -$split_entry[18];
+      $outbound_hash{'plnorbtper'} = $split_entry[16] + 2440000; # Julian day format
+      $outbound_hash{'plnorbtpererr1'} = sprintf "%.1f", $split_entry[18];
+      $outbound_hash{'plnorbtpererr2'} = sprintf "%.1f", -$split_entry[18];
       $outbound_hash{'plnmsinij'} = $split_entry[24];
       $outbound_hash{'plnmsinijerr1'} = $split_entry[25];
       $outbound_hash{'plnmsinijerr2'} = -$split_entry[25];
