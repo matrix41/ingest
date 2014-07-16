@@ -57,9 +57,6 @@ close ($fh);
 open ( my $fh2, '>', $outputfile ) or die "\nCould not open file $outputfile $!\n";
 
 my %outbound_hash = ();
-my $howmanyA;
-my $howmanyB;
-my $sigdig;
 
 my @split_entry;
 # Line 38 is the beginning of the data 
@@ -124,27 +121,24 @@ for ( my $j = 38; $j <= $#array; $j++ )
       if ( length($split_entry[14]) > 0 )
       {
         $outbound_hash{'plnorblpererr1'} = $split_entry[14];
-#       $outbound_hash{'plnorblpererr2'} = -$split_entry[14];
-        $howmanyA = length($split_entry[14]);
-        $howmanyB = length(int($split_entry[14]));
-        $sigdig = $howmanyA-$howmanyB-1;
-        $outbound_hash{'plnorblpererr2'} = sprintf "%.${sigdig}f", -$split_entry[14];
+        $outbound_hash{'plnorblpererr2'} = -$split_entry[14];
       }
       $outbound_hash{'plnorbtper'} = $split_entry[16] + 2440000; # Julian day format
 #      print "\n\nGI Joe1 $split_entry[18]\n\n";
 #      print "\n\nGI Joe2 -$split_entry[18]\n\n";
       $outbound_hash{'plnorbtpererr1'} = $split_entry[18];
 # Crazy Step 0 of 4: This line doesn't preserve trailing zeroes. 
-#     $outbound_hash{'plnorbtpererr2'} = -$split_entry[18];
+#      $outbound_hash{'plnorbtpererr2'} = -$split_entry[18];
+
 # Crazy Step 1 of 4: Calculate the length of decimal number. 
-      $howmanyA = length($split_entry[18]);
+      my $howmanyA = length($split_entry[18]);
 #      print "howmanyA = $howmanyA\n\n";
 # Crazy Step 2 of 4: Calculate the integer portion of decimal number. 
-      $howmanyB = length(int($split_entry[18]));
+      my $howmanyB = length(int($split_entry[18]));
 #      print "howmanyB = $howmanyB\n\n";
 # Crazy Step 3 of 4: Now subtract the length of integer portion from the original length.
 #                    Also, subtract one more to account for the decimal place. 
-      $sigdig = $howmanyA-$howmanyB-1;
+      my $sigdig = $howmanyA-$howmanyB-1;
 #      print "sigdig = $sigdig\n\n";
 # Crazy Step 4 of 4: Now use the computed length $sigdig to control the 
 #                    number of significant digits. 
