@@ -124,7 +124,11 @@ for ( my $j = 38; $j <= $#array; $j++ )
       if ( length($split_entry[14]) > 0 )
       {
         $outbound_hash{'plnorblpererr1'} = $split_entry[14];
-        $outbound_hash{'plnorblpererr2'} = -$split_entry[14];
+#       $outbound_hash{'plnorblpererr2'} = -$split_entry[14];
+        $howmanyA = length($split_entry[14]);
+        $howmanyB = length(int($split_entry[14]));
+        $sigdig = $howmanyA-$howmanyB-1;
+        $outbound_hash{'plnorblpererr2'} = sprintf "%.${sigdig}f", -$split_entry[14];
       }
       $outbound_hash{'plnorbtper'} = $split_entry[16] + 2440000; # Julian day format
 #      print "\n\nGI Joe1 $split_entry[18]\n\n";
