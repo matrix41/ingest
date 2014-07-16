@@ -113,7 +113,11 @@ for ( my $j = 38; $j <= $#array; $j++ )
       $outbound_hash{'plnletter'} = $split_entry[2];
       $outbound_hash{'plnorbper'} = $split_entry[4];
       $outbound_hash{'plnorbpererr1'} = $split_entry[5];
-      $outbound_hash{'plnorbpererr2'} = -$split_entry[5];
+#      $outbound_hash{'plnorbpererr2'} = -$split_entry[5];
+      $howmanyA = length($split_entry[5]);
+      $howmanyB = length(int($split_entry[5]));
+      $sigdig = $howmanyA-$howmanyB-1;
+      $outbound_hash{'plnorbpererr2'} = sprintf "%.${sigdig}f", -$split_entry[5];
       $outbound_hash{'plnrvamp'} = $split_entry[7];
       $outbound_hash{'plnrvamperr1'} = $split_entry[8];
       $outbound_hash{'plnrvamperr2'} = -$split_entry[8];
