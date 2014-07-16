@@ -1,0 +1,500 @@
+  102  l
+  103  ./spar.pl
+  104  ./spar.pl
+  105  l | tail
+  106  cat fg.test
+  107  l
+  108  git add spar.pl
+  109  git commit -m 'modified the user input for objectid to ensure input is exactly eight digits'
+  110  ./spar.pl
+  111  cd ../ppar2
+  112  l
+  113  subl ppar2.pl
+  114  pwd
+  115  l *p
+  116  l *pl
+  117  subl ppar2.pl
+  118  ./ppar2.pl
+  119  ./ppar2.pl
+  120  pwd
+  121  git add ppar2.pl
+  122  git commit -m 'modified the user input for objectid to ensure input is exactly eight digits'
+  123  pwd
+  124  cd ../spar
+  125  l
+  126  subl spar.pl
+  127  git add spar.pl
+  128  git commit -m 'added additional comments to describe special algorithm checks'
+  129  subl spar.pl
+  130  cd ../ppar2
+  131  l
+  132  subl ppar2.pl
+  133  ./ppar2.pl
+  134  ./ppar2.pl
+  135  git add ppar2.pl
+  136  git commit -m 'added special algorithm check to calculate earth radius and solar radius if given jupiter radius'
+  137  l | tail
+  138  cd
+  139  cd
+  140  exit
+  141  vi temp999
+  142  cd
+  143  exit
+  144  exit
+  145  cd concatenate
+  146  l
+  147  more concat*.pl
+  148  more concat*.pl
+  149   
+  150  l
+  151  cd
+  152  exit
+  153  pwd
+  154  cd src
+  155  l
+  156  pwd
+  157  mkdir ingest
+  158  cd ingest
+  159  l
+  160  pwd
+  161  which perl
+  162  which ruby
+  163  perl -v
+  164  /usr/bin/perl -v
+  165  ruby -v
+  166  p
+  167  cd ..
+  168  pwd
+  169  l | tail
+  170  rm -rf ingest
+  171  l | tail
+  172  l | tail
+  173  cd ingest
+  174  l
+  175  touch ingest.pl
+  176  subl ingest.pl
+  177  which per
+  178  which perl
+  179  l ~/Desktop/*.csv
+  180  cp -p /Users/raymond/Desktop/J_ApJ_646_505_table3-140624.csv .
+  181  l
+  182  l
+  183  ./ingest.pl
+  184  chmod 744 ingest.pl
+  185  ./ingest.pl
+  186  ./ingest.pl
+  187  ./ingest.pl
+  188  ./ingest.pl
+  189  ./ingest.pl
+  190  ./ingest.pl
+  191  l
+  192  vi ingest.pl
+  193  git add ingest.pl
+  194  git commit -m 'working draft version'
+  195  p
+  196  h
+  197  history
+  198  l
+  199  cd
+  200  cd
+  201  exit
+  202  man vi
+  203  cd
+  204  exit
+  205  pwd
+  206  l
+  207  cd nexsci
+  208  l
+  209  vi table3.txt
+  210  vi table3.txt
+  211  vi table3.txt
+  212  vi table3.txt
+  213  cp -p table3.txt table3b.txt
+  214  vi table3b.txt
+  215  vi table3b.txt
+  216  vi table3b.txt
+  217  cp -p table3.txt table3c.txt
+  218  vi table3c.txt
+  219  cd
+  220  exit
+  221  exit
+  222  cd nexsci
+  223  l
+  224  vi table_no_REFID_175.txt
+  225  cd
+  226  exit
+  227  cd ingest
+  228  l
+  229  ./ingest.pl
+  230  ./ingest.pl
+  231  ./ingest.pl
+  232  ./ingest.pl
+  233  ./ingest.pl
+  234  ./ingest.pl
+  235  ./ingest.pl
+  236  ./ingest.pl
+  237  pwd
+  238  u
+  239  l
+  240  cd spar
+  241  l
+  242  view spar.pl
+  243  pwd
+  244  cd ../ingest
+  245  l
+  246  ./ingest.pl
+  247  ./ingest.pl
+  248  cd ../spar
+  249  view spar.pl
+  250  pwd
+  251  cd ../ingest
+  252  ./ingest.pl
+  253  ./ingest.pl
+  254   
+  255  l
+  256  git add ingest.pl
+  257  git commit -m 'the headers are now loaded into a hash'
+  258  l
+  259  l
+  260  git add ingest.pl
+  261  git commit -m 'fixed this weird bug in the data that was messing my hash keys (the bug was in the header RV)'
+  262  l
+  263  l
+  264  history
+  265  cd
+  266  exit
+  267  l
+  268  cd nexsci
+  269  l
+  270  u
+  271  l
+  272  cd ingest
+  273  l
+  274  subl ingest.pl
+  275  ./ingest.pl
+  276  ./ingest.pl
+  277  ./ingest.pl
+  278  ./ingest.pl
+  279  ./ingest.pl
+  280  ./ingest.pl
+  281  ./ingest.pl
+  282  ./ingest.pl
+  283  ./ingest.pl
+  284  ./ingest.pl
+  285  vi ingest.out
+  286  ./ingest.pl
+  287  ./ingest.pl
+  288  ./ingest.pl
+  289  ./ingest.pl
+  290  l
+  291  git add ingest.pl
+  292  git commit -m 'trying to figure out how to make hash keys from the column headers'
+  293  l
+  294  subl ingest.pl
+  295  ./ingest.pl
+  296  ./ingest.pl
+  297  ./ingest.pl
+  298  ./ingest.pl
+  299  ./ingest.pl
+  300  ./ingest.pl
+  301  ./ingest.pl
+  302  ./ingest.pl
+  303  ./ingest.pl
+  304  ./ingest.pl
+  305  ./ingest.pl
+  306  ./ingest.pl
+  307  ./ingest.pl
+  308  ./ingest.pl
+  309  ./ingest.pl
+  310  ./ingest.pl
+  311  ./ingest.pl
+  312  ./ingest.pl
+  313  ./ingest.pl
+  314  ./ingest.pl
+  315  ./ingest.pl
+  316  ./ingest.pl
+  317  ./ingest.pl
+  318  history
+  319  cd
+  320  exit
+  321  pwd
+  322  cd Desktop
+  323  vi names.txt
+  324  cd
+  325  exit
+  326  cd nexsci
+  327  l
+  328  cp -p table_no_REFID_175.txt table_no_REFID_175.txt_COPY
+  329  vi table_no_REFID_175.txt
+  330  vi table_no_REFID_175.txt
+  331  l
+  332  vi table_no_REFID_175.txt
+  333  vi table_no_REFID_175.txt
+  334  cp -p table_no_REFID_175.txt table_no_REFID_175.txt_SAVE01
+  335  vi table_no_REFID_175.txt
+  336  cp -p table_no_REFID_175.txt table_no_REFID_175.txt_SAVE02
+  337  vi table_no_REFID_175.txt
+  338  cp -p table_no_REFID_175.txt ~/Desktop
+  339  vi table_no_REFID_175.txt
+  340  vi table_no_REFID_175.txt
+  341  vi table_no_REFID_175.txt
+  342  cp -p table_no_REFID_175.txt ~/Desktop
+  343  vi table_no_REFID_175.txt
+  344  cp -p table_no_REFID_175.txt ~/Desktop
+  345  vi table_no_REFID_175.txt
+  346  cp -p table_no_REFID_175.txt ~/Desktop
+  347  vi table_no_REFID_175.txt
+  348  cp -p table_no_REFID_175.txt ~/Desktop
+  349  PWD
+  350  h
+  351  history
+  352  cd
+  353  exit
+  354  pwd
+  355  cd ppar
+  356  l
+  357  cd ../ppar2
+  358  l
+  359  more HD_81688.planet
+  360  pwd
+  361  view ppar2.pl
+  362  subl ppar2.pl
+  363  pwd
+  364  which perl
+  365  which perl
+  366  perl -v
+  367  pwd
+  368  cd
+  369  cd nexsci
+  370  l
+  371  cd ../ingest
+  372  l
+  373  ./remove_extra_spaces_at_end.pl
+  374  ./remove_extra_spaces_at_end.pl
+  375  ./remove_extra_spaces_at_end.pl
+  376  ./remove_extra_spaces_at_end.pl
+  377  l SQL-query-results3.txt
+  378  wc SQL-query-results3.txt
+  379  ./remove_extra_spaces_at_end.pl
+  380  ./remove_extra_spaces_at_end.pl
+  381  ./remove_extra_spaces_at_end.pl
+  382  ./remove_extra_spaces_at_end.pl
+  383  ./remove_extra_spaces_at_end.pl
+  384  ./remove_extra_spaces_at_end.pl
+  385  ./remove_extra_spaces_at_end.pl
+  386  ./remove_extra_spaces_at_end.pl
+  387  ./remove_extra_spaces_at_end.pl
+  388  ./remove_extra_spaces_at_end.pl
+  389  ./remove_extra_spaces_at_end.pl
+  390  ./remove_extra_spaces_at_end.pl
+  391  ./remove_extra_spaces_at_end.pl
+  392  ./remove_extra_spaces_at_end.pl
+  393  l
+  394  ./remove_extra_spaces_at_end.pl
+  395  l
+  396  ./remove_extra_spaces_at_end.pl
+  397  l
+  398  cat SQL-query-results3fixed.txt
+  399  vi SQL-query-results3fixed.txt
+  400  history
+  401  pwd
+  402  cd
+  403  exit
+  404  cd ingest
+  405  l
+  406  cal
+  407  cat ingest.out
+  408  l
+  409  ./ingest.pl
+  410  l
+  411  subl ingest.pl
+  412  ./ingest.pl
+  413  ./ingest.pl
+  414  ./ingest.pl
+  415  ./ingest.pl
+  416  l
+  417  git add ingest.pl
+  418  git commit -m 'added/edited some comments; added some new code'
+  419  l
+  420  subl ingest.pl
+  421  ./ingest.pl
+  422  ./ingest.pl
+  423  ./ingest.pl
+  424  ./ingest.pl
+  425  ./ingest.pl
+  426  ./ingest.pl
+  427  ./ingest.pl
+  428  ./ingest.pl
+  429  ;
+  430  ;
+  431  ;
+  432  ./ingest.pl
+  433  ./ingest.pl
+  434  ./ingest.pl
+  435  ./ingest.pl
+  436  ./ingest.pl
+  437  vi SQL-query_results.txt
+  438  vi SQL-query_results.txt
+  439  ./ingest.pl
+  440   l
+  441  vi SQL-query-results2.txt
+  442  vi SQL-query-results2.txt
+  443  cp SQL-query-results2.txt ~/Desktop
+  444  vi SQL-query-input2.txt
+  445  p
+  446  l
+  447  cp -p SQL-query-input2.txt SQL-query-input2b.txt
+  448  vi SQL-query-input2b.txt
+  449  vi SQL-query-input2b.txt
+  450  cat SQL-query-input2b.txt
+  451  l
+  452  vi SQL-query-results2b.txt
+  453  cat SQL-query-input2.txt
+  454  l
+  455  l SQL-query-input2.txt
+  456  cp SQL-query-input2.txt SQL-query-input3.txt
+  457  vi SQL-query-input3.txt
+  458  cat SQL-query-input3.txt
+  459  l
+  460  vi SQL-query-results3.txt
+  461  vi SQL-query-results3.txt
+  462  vi remove_extra_spaces_at_end.pl
+  463  vi remove_extra_spaces_at_end.pl
+  464  chmod 744 remove_extra_spaces_at_end.pl
+  465  ./remove_extra_spaces_at_end.pl
+  466  vi remove_extra_spaces_at_end.pl
+  467  ./remove_extra_spaces_at_end.pl
+  468  vi remove_extra_spaces_at_end.pl
+  469  vi remove_extra_spaces_at_end.pl
+  470  ./remove_extra_spaces_at_end.pl
+  471  vi remove_extra_spaces_at_end.pl
+  472  ./remove_extra_spaces_at_end.pl
+  473  ./remove_extra_spaces_at_end.pl
+  474  vi remove_extra_spaces_at_end.pl
+  475  ./remove_extra_spaces_at_end.pl
+  476  vi remove_extra_spaces_at_end.pl
+  477  ./remove_extra_spaces_at_end.pl
+  478  vi remove_extra_spaces_at_end.pl
+  479  ./remove_extra_spaces_at_end.pl
+  480  vi remove_extra_spaces_at_end.pl
+  481  l | tail
+  482  more SQL-query-results3fixed.txt
+  483  vi SQL-query-results3fixed.txt
+  484  l
+  485  tar cf homework.tar remove_extra_spaces_at_end.pl SQL-query-results3.txt SQL-query-input2.txt ingest.pl SQL-query_results.txt
+  486  l
+  487  gzip homework.tar
+  488  l
+  489  cp -p homework.tar.gz ~/Desktop
+  490  pwd
+  491  cd
+  492  exit
+  493  cd Desktop
+  494  l
+  495  l
+  496  mv mashable2.rb mashable2_rb.txt
+  497  cd
+  498  cd Desktop
+  499  l
+  500  mv mash_view.erb mash_view_erb.txt
+  501  cd ingest
+  502  l
+  503  l remove*
+  504  cp -p remove_extra_spaces_at_end.pl remove_extra_spaces_at_end.pl_SAVE01
+  505  subl remove_extra_spaces_at_end.pl
+  506  l
+  507  cp -p remove_extra_spaces_at_end.pl remove_extra_spaces_at_end.pl_SAVE02
+  508  subl remove_extra_spaces_at_end.pl
+  509  subl ingest.pl
+  510  l
+  511  more SQL-query-input3.txt
+  512  l
+  513  more SQL-query-results3.txt
+  514  l
+  515  subl remove_extra_spaces_at_end.pl
+  516  l
+  517  vi butler_table3a.txt
+  518  cp butler_table3a.txt ~/Desktop
+  519  p
+  520  subl ingest.pl
+  521  l
+  522  cal
+  523  git add ingest.pl
+  524  git commit -m 'identified all the column fields (ie column numbers) that I will need to make planet parameter files' 
+  525  l
+  526  subl ingest.gl
+  527  subl ingest.pl
+  528  mv butler_table3a.txt butler_table3a.txt_SAVE01
+  529  l
+  530  subl ingest.pl
+  531  l
+  532  git add ingest.pl
+  533  git commit -m 'made some minor changes'
+  534  l
+  535  subl ingest.pl
+  536  l
+  537  git add ingest.pl
+  538  git commit -m 'added IF statement to only select those planets that were original research by Butler 2006 (Bu6)'
+  539  subl ingest.pl
+  540  git add ingest.pl
+  541  git commit -m 'fixed spacing here and there'
+  542  subl ingest.pl
+  543  cp ingest.pl ~/Desktop/ingest_pl.txt
+  544  git add ingest.pl
+  545  git commit -m 'working on code to pass planet parameters as hash. i am thinking of passing these hash parameters to a modified ppar2.pl to generate planet parameter files'
+  546  l
+  547  tar cf homework2.tar ingest.pl J_ApJ_646_505_table3-140624.csv
+  548  l | taill
+  549  l
+  550  gzip homework2.tar
+  551  l
+  552  up
+  553  l
+  554  subl ingest.pl
+  555  perl -v
+  556  l
+  557  git add ingest.pl
+  558  git commit -m 'added some code to check for zero-length values (to avoid errors during runtime)'
+  559  subl ingest.pl
+  560  git add ingest.pl
+  561  git commit -m 'implemented array of hashes design to pass values out of program.  the idea is to pass the array of hashes to a modified ppar2.pl'
+  562  git add ingest.pl
+  563  git commit -m 'verified the array of hashes is working as intended'
+  564  subl ingest.pl
+  565  l
+  566  git commit -m 'have to commit something before GitHub will let me sync'
+  567  git push
+  568  git status
+  569  git push
+  570  git status
+  571  git add ingest.pl
+  572  git commit -m 'minor edits'
+  573  l
+  574  subl ingest.pl
+  575  l
+  576  git add ingest.pl
+  577  git commit -m 'reverted back to outbound_hash; previously I used an array of hashes, but decided that wasn't needed so I reverted the commit (I did not roll back the commit)'
+  578  git commit -m 'reverted back to outbound_hash; previously I used an array of hashes, but decided that was not needed so I reverted the commit (I did not roll back the commit)'
+  579  git add ingest.pl
+  580  git commit -m 'deleted some more lines of code (and moved others around) that I missed after the revert commit'
+  581  git add ingest.pl
+  582  git commit -m 'deleted a few more lines....'
+  583  git add ingest.pl
+  584  git commit -m 'added back the code to check for zero length fields at index 14'
+  585  subl ingest.pl
+  586  pwd
+  587  l | tail -5
+  588  subl ingest.pl
+  589  git add ingest.pl
+  590  git commit -m 'added back code to create planet name by combining two hash values'
+  591  git add ingest.pl
+  592  git commit -m 'broke plnname into plnname and plnletter'
+  593  git add ingest.pl
+  594  git commit -m 'added additional hash keys for plnorbsmaxlim, plnorbtperlim, plnorbeccenlim, plnorblperlim, plnmsinilim'
+  595  l | tail
+  596  git add ingest.pl
+  597  git commit -m 'added plnrefid=175'
+  598  pwd
+  599  subl ingest.pl
+  600  history
+  601  history > hfile_ingest_pl_development.txt
