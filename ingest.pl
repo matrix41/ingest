@@ -124,27 +124,29 @@ for ( my $j = 38; $j <= $#array; $j++ )
         $outbound_hash{'plnorblpererr2'} = -$split_entry[14];
       }
       $outbound_hash{'plnorbtper'} = $split_entry[16] + 2440000; # Julian day format
-      print "\n\nGI Joe1 $split_entry[18]\n\n";
-      print "\n\nGI Joe2 -$split_entry[18]\n\n";
+#      print "\n\nGI Joe1 $split_entry[18]\n\n";
+#      print "\n\nGI Joe2 -$split_entry[18]\n\n";
       $outbound_hash{'plnorbtpererr1'} = $split_entry[18];
 # Crazy Step 0 of 4: This line doesn't preserve trailing zeroes. 
 #      $outbound_hash{'plnorbtpererr2'} = -$split_entry[18];
 
 # Crazy Step 1 of 4: Calculate the length of decimal number. 
       my $howmanyA = length($split_entry[18]);
-      print "howmanyA = $howmanyA\n\n";
+#      print "howmanyA = $howmanyA\n\n";
 # Crazy Step 2 of 4: Calculate the integer portion of decimal number. 
       my $howmanyB = length(int($split_entry[18]));
-      print "howmanyB = $howmanyB\n\n";
+#      print "howmanyB = $howmanyB\n\n";
 # Crazy Step 3 of 4: Now subtract the length of integer portion from the original length.
 #                    Also, subtract one more to account for the decimal place. 
       my $sigdig = $howmanyA-$howmanyB-1;
-      print "sigdig = $sigdig\n\n";
+#      print "sigdig = $sigdig\n\n";
 # Crazy Step 4 of 4: Now use the computed length $sigdig to control the 
 #                    number of significant digits. 
       $outbound_hash{'plnorbtpererr2'} = sprintf "%.${sigdig}f", -$split_entry[18];
-      printf "\n\nGI Joe3 $outbound_hash{'plnorbtpererr2'}\n\n";
+#      printf "\n\nGI Joe3 $outbound_hash{'plnorbtpererr2'}\n\n";
 
+# Note-to-self: I did not want to use the two lines below because I could 
+# not use a fixed value in setting the significant digit
 #      $outbound_hash{'plnorbtpererr1'} = sprintf "%.1f", $split_entry[18];
 #      $outbound_hash{'plnorbtpererr2'} = sprintf "%.1f", -$split_entry[18];
       $outbound_hash{'plnmsinij'} = $split_entry[24];
