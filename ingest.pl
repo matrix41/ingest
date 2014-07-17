@@ -112,12 +112,29 @@ for ( my $j = 38; $j <= $#array; $j++ )
       $outbound_hash{'plnname'} = $split_entry[1]; 
       $outbound_hash{'plnletter'} = $split_entry[2];
       $outbound_hash{'plnorbper'} = $split_entry[4];
-      $outbound_hash{'plnorbpererr1'} = $split_entry[5];
-#      $outbound_hash{'plnorbpererr2'} = -$split_entry[5];
-      $howmanyA = length($split_entry[5]);
-      $howmanyB = length(int($split_entry[5]));
+#     $outbound_hash{'plnorbpererr1'} = $split_entry[5];
+#     $outbound_hash{'plnorbpererr2'} = -$split_entry[5];
+# A slight modification of my idea.  For plnorbpererr1/plnorbpererr2 I am counting 
+# the significant digits of plnorbper to fix sigdig (instead of plnorbpererr2).  
+      $howmanyA = length($split_entry[4]);
+      $howmanyB = length(int($split_entry[4]));
       $sigdig = $howmanyA-$howmanyB-1;
+      $outbound_hash{'plnorbpererr1'} = sprintf "%.${sigdig}f", $split_entry[5];
       $outbound_hash{'plnorbpererr2'} = sprintf "%.${sigdig}f", -$split_entry[5];
+
+      # # This idea did not pan out very well.  
+      # if ( $split_entry[5] < 0.0010 )
+      # {
+      #   $sigdig = $howmanyA-$howmanyB+1;
+      #   $outbound_hash{'plnorbpererr1'} = sprintf "%.${sigdig}f", $split_entry[5];
+      #   $outbound_hash{'plnorbpererr2'} = sprintf "%.${sigdig}f", -$split_entry[5];
+      # } else 
+      # {
+      #   $sigdig = $howmanyA-$howmanyB-1;
+      #   $outbound_hash{'plnorbpererr1'} = sprintf "%.${sigdig}f", $split_entry[5];
+      #   $outbound_hash{'plnorbpererr2'} = sprintf "%.${sigdig}f", -$split_entry[5];
+      # }
+
       $outbound_hash{'plnrvamp'} = $split_entry[7];
       $outbound_hash{'plnrvamperr1'} = $split_entry[8];
       $outbound_hash{'plnrvamperr2'} = -$split_entry[8];
@@ -140,7 +157,6 @@ for ( my $j = 38; $j <= $#array; $j++ )
       $outbound_hash{'plnorbtpererr1'} = $split_entry[18];
 # Crazy Step 0 of 4: This line doesn't preserve trailing zeroes. 
 #      $outbound_hash{'plnorbtpererr2'} = -$split_entry[18];
-
 # Crazy Step 1 of 4: Calculate the length of decimal number. 
       $howmanyA = length($split_entry[18]);
 #      print "howmanyA = $howmanyA\n\n";
