@@ -56,7 +56,7 @@ close ($fh);
 
 open ( my $fh2, '>', $outputfile ) or die "\nCould not open file $outputfile $!\n";
 
-my %outbound_hash = ();
+# my %outbound_hash = ();
 my $howmanyA;
 my $howmanyB;
 my $sigdig;
@@ -65,6 +65,10 @@ my @split_entry;
 # Line 38 is the beginning of the data 
 for ( my $j = 38; $j <= $#array; $j++ )
 {
+  my %outbound_hash = (); # define outbound_hash inside FOR-loop instead of outside.
+                          # this will fix ugly problem where planet parameter values 
+                          # from previous iteration gets used/mixed up with the next 
+                          # group of planet parameter values. 
 #  print $array[$j];
   @split_entry = split( /,/, $array[$j] );
 #  print "$split_entry[0]  $split_entry[1]  $split_entry[2]  $split_entry[3]\n";
