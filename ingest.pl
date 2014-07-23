@@ -167,7 +167,6 @@ for ( my $j = 38; $j <= $#array; $j++ )
       $howmanyA = length($outbound_hash{'plnorbtper'});
       $howmanyB = length(int($outbound_hash{'plnorbtper'}));
       $sigdig = $howmanyA-$howmanyB;
-      print "\n\nGRID10 SECTOR 3658 $sigdig  $outbound_hash{'plnname'}\n\n";
       $outbound_hash{'plnorbtpererr1'} = sprintf "%.${sigdig}f", $split_entry[18];
       $outbound_hash{'plnorbtpererr2'} = sprintf "%.${sigdig}f", -$split_entry[18];
 
@@ -196,9 +195,18 @@ for ( my $j = 38; $j <= $#array; $j++ )
       $outbound_hash{'plnmsinij'} = $split_entry[24];
       $outbound_hash{'plnmsinijerr1'} = $split_entry[25];
       $outbound_hash{'plnmsinijerr2'} = -$split_entry[25];
-      $outbound_hash{'plnorbsmax'} = $split_entry[27];
-      $outbound_hash{'plnorbsmaxerr1'} = $split_entry[28];
-      $outbound_hash{'plnorbsmaxerr2'} = -$split_entry[28];
+
+# Gawd... this is an ugly hack. I am using the # of sig dig in the error to 
+# fix the sig dig in plnorbsmax
+      $howmanyA = length($split_entry[28]);
+      $howmanyB = length(int($split_entry[28]));
+      $sigdig = $howmanyA-$howmanyB-1;
+      $outbound_hash{'plnorbsmax'} = sprintf "%.${sigdig}f", $split_entry[27];
+      $outbound_hash{'plnorbsmaxerr1'} = sprintf "%.${sigdig}f",  $split_entry[28];
+      $outbound_hash{'plnorbsmaxerr2'} = sprintf "%.${sigdig}f", -$split_entry[28];
+#      $outbound_hash{'plnorbsmax'} = $split_entry[27];
+#      $outbound_hash{'plnorbsmaxerr1'} =  $split_entry[28];
+#      $outbound_hash{'plnorbsmaxerr2'} = -$split_entry[28];
 
       $outbound_hash{'plnorbperlim'} = 0;
       $outbound_hash{'plnorbsmaxlim'} = 0;
